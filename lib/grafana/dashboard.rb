@@ -57,9 +57,16 @@ module Grafana
     end
 
     def search_dashboards(params={})
-      params['query'] = (params['query'].length >= 1 ? CGI::escape(params['query']) : '' )
-      params['starred'] = (params['starred'] ? 'true' : 'false')
-      endpoint = "/api/search/?query=#{params['query']}&starred=#{params['starred']}&tag=#{params['tags']}"
+      raise 'No query specified' unless params.has_key?('query')
+
+      query = CGI::escape(params['query'])
+      tag = params['tag']
+      starred = params['starred'] && params['starred'].is_a?(TrueClass)
+
+      endpoint = "/api/search/?query=#{query}"
+      endpoint += "&tag=#{tag}" if tag
+      endpoint += "&starred=#{starred}" if starred
+
       @logger.info("Attempting to search for dashboards (GET #{endpoint})") if @debug
       return get_request(endpoint)
     end
