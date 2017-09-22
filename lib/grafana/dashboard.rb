@@ -27,11 +27,16 @@ module Grafana
       return get_request(endpoint)
     end
 
-    def create_dashboard(properties={})
+    def create_dashboard(properties={}, template=true)
       endpoint = "/api/dashboards/db"
-      dashboard = self.build_template(properties)
-      @logger.info("Creating dashboard: #{properties['title']} (POST /api/dashboards/db)") if @debug
-      return post_request(endpoint, dashboard)
+      if template
+        dashboard = self.build_template(properties)
+        @logger.info("Creating dashboard from template: #{properties['title']} (POST /api/dashboards/db)") if @debug
+        return post_request(endpoint, dashboard)
+      else
+        @logger.info("Creating dashboard: #{properties['dashboard']['title']} (POST /api/dashboards/db)") if @debug
+        return post_request(endpoint, properties)
+      end
     end
 
     def delete_dashboard(name)
