@@ -73,5 +73,5 @@ g.get_dashboard_tags()
 
 ##### Search for dashboard:
 ```ruby
-g.search_dashboards({"query" => "My Dashboard", "tags" => 'test'})
+g.search_dashboards({"query" => "My Dashboard", "tag" => 'test'})
 ```
