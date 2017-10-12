@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.files       = ["lib/grafana.rb"] + Dir["lib/grafana/*"]
   s.homepage    = 'http://github.com/hartfordfive/ruby-grafana-api'
   s.license     = 'MIT'
-  s.add_runtime_dependency 'json',         '~> 1.7'
+  s.add_runtime_dependency 'json'
   s.add_runtime_dependency 'rest-client',  '~> 1.8'
 end
