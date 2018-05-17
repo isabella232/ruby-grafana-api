@@ -10,5 +10,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/hartfordfive/ruby-grafana-api'
   s.license     = 'MIT'
   s.add_runtime_dependency 'json'
-  s.add_runtime_dependency 'rest-client',  '~> 1.8'
+  s.add_runtime_dependency 'rest-client',  '~> 2.0.2'
 end
