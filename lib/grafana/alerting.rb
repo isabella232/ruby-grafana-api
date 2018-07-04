@@ -19,6 +19,12 @@ module Grafana
       @logger.info("Attempting to get alert #{id} (GET #{endpoint})") if @debug
       return get_request(endpoint)
     end
+    
+    def get_alert_status(id)
+      endpoint = "/api/alerts/status/#{id}"
+      @logger.info("Attempting to get alert status #{id} (GET #{endpoint})") if @debug
+      return get_request(endpoint)
+    end
 
     def pause_alert(id)
       endpoint = "/api/alerts/#{id}/pause"
